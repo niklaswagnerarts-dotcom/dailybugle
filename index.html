@@ -9,61 +9,46 @@
 
 <script>
 window.ZEITUNG_DATA = {
-  meta: {
-    datum: "Sonntag, 19. April 2026",
-    ausgabe: 1,
-    wetter: "Strasbourg · 14 °C, leicht bewölkt",
-    updatezeit: "06:00",
-    artikelCount: 15
+  "meta": {
+    "datum": "Sonntag, 19. April 2026",
+    "ausgabe": 109,
+    "wetter": "Strasbourg · Wetter wird geladen …",
+    "updatezeit": "20:15",
+    "artikelCount": 0
   },
-  hero: {
-    title: "EU einigt sich auf neues KI-Regulierungspaket — Unternehmen müssen Transparenzpflichten erfüllen",
-    summary: "Die Europäische Union hat nach monatelangen Verhandlungen ein überarbeitetes KI-Gesetz verabschiedet. Unternehmen mit mehr als 50 Mitarbeitern sind künftig verpflichtet, den Einsatz automatisierter Entscheidungssysteme offenzulegen und Nutzern auf Anfrage eine menschliche Überprüfung anzubieten.",
-    source: "Spiegel Online",
-    readtime: "4 Min.",
-    imageUrl: "https://picsum.photos/seed/euai/800/600",
-    articleUrl: "#"
+  "hero": {
+    "title": "Willkommen bei The Daily Bugle",
+    "summary": "Deine persönliche Zeitung wird täglich aktualisiert.",
+    "source": "Daily Bugle",
+    "readtime": "1 Min.",
+    "imageUrl": "https://picsum.photos/seed/hero/800/600",
+    "articleUrl": "#"
   },
-  sektionen: [
+  "sektionen": [
     {
-      id: "tech", titel: "Tech & AI",
-      artikel: [
-        { title: "Anthropic veröffentlicht Modell mit Kontextfenster von einer Million Tokens", summary: "Das neue Modell ist ab sofort über die API verfügbar und verändert die Spielregeln für Entwickler.", source: "The Verge", readtime: "2 Min.", category: "tech", imageUrl: "https://picsum.photos/seed/anthropic2/600/400", articleUrl: "#" },
-        { title: "Open-Source-Modell übertrifft GPT-4 in mehreren Benchmark-Tests", summary: "Ein chinesisches Forschungsteam hat ein Modell veröffentlicht, das bei Standard-Benchmarks besser abschneidet.", source: "Heise Online", readtime: "3 Min.", category: "tech", imageUrl: "https://picsum.photos/seed/llmbench/600/400", articleUrl: "#" },
-        { title: "Apple kündigt überarbeitete Siri mit vollständiger On-Device-KI an", summary: "Die neue Version soll vollständig lokal auf dem Gerät laufen und keine Nutzerdaten mehr in die Cloud senden.", source: "9to5Mac", readtime: "2 Min.", category: "tech", imageUrl: "https://picsum.photos/seed/applesiri/600/400", articleUrl: "#" }
-      ]
+      "id": "tech",
+      "titel": "Tech & AI",
+      "artikel": []
     },
     {
-      id: "politik", titel: "Politik",
-      artikel: [
-        { title: "Bundesregierung beschließt Haushalt 2027 mit umstrittenen Sparmaßnahmen", summary: "Trotz Widerstand aus der Koalition wurde der Entwurf mit knapper Mehrheit verabschiedet.", source: "FAZ", readtime: "5 Min.", category: "politik", imageUrl: "https://picsum.photos/seed/bundestag/600/400", articleUrl: "#" },
-        { title: "G7-Gipfel: Einigung auf gemeinsamen Rahmen für KI-Gouvernanz", summary: "Die sieben größten Industrienationen wollen bei der Regulierung künstlicher Intelligenz enger zusammenarbeiten.", source: "Zeit Online", readtime: "4 Min.", category: "politik", imageUrl: "https://picsum.photos/seed/g7summit/600/400", articleUrl: "#" },
-        { title: "Frankreich und Deutschland einigen sich auf neues Migrationsabkommen", summary: "Beide Länder wollen Asylverfahren künftig enger koordinieren und Rückführungen gemeinsam beschleunigen.", source: "Le Monde / taz", readtime: "3 Min.", category: "politik", imageUrl: "https://picsum.photos/seed/deufra/600/400", articleUrl: "#" }
-      ]
+      "id": "politik",
+      "titel": "Politik",
+      "artikel": []
     },
     {
-      id: "wirtschaft", titel: "Wirtschaft",
-      artikel: [
-        { title: "DAX schließt auf neuem Rekordhoch — Technologiewerte treiben den Anstieg", summary: "Starke Quartalszahlen großer Technologieunternehmen trieben den deutschen Leitindex auf ein neues Allzeithoch.", source: "Handelsblatt", readtime: "3 Min.", category: "wirtschaft", imageUrl: "https://picsum.photos/seed/daxrecord/600/400", articleUrl: "#" },
-        { title: "EZB signalisiert weiteren Zinsschnitt im Sommer", summary: "Angesichts sinkender Inflation deutet die Europäische Zentralbank eine weitere Lockerung ihrer Geldpolitik an.", source: "Reuters", readtime: "3 Min.", category: "wirtschaft", imageUrl: "https://picsum.photos/seed/ezb2026/600/400", articleUrl: "#" },
-        { title: "NVIDIA übertrifft Erwartungen mit Quartalsgewinn von 26 Mrd. USD", summary: "Die anhaltend hohe Nachfrage nach KI-Chips beschert dem Konzern erneut Rekordgewinne.", source: "Bloomberg", readtime: "2 Min.", category: "wirtschaft", imageUrl: "https://picsum.photos/seed/nvidiaq/600/400", articleUrl: "#" }
-      ]
+      "id": "wirtschaft",
+      "titel": "Wirtschaft",
+      "artikel": []
     },
     {
-      id: "wissenschaft", titel: "Wissenschaft",
-      artikel: [
-        { title: "James Webb entdeckt Atmosphäre auf erdähnlichem Exoplaneten", summary: "Erstmals konnten Astronomen eine dichte Atmosphäre auf einem felsigen Planeten außerhalb unseres Sonnensystems nachweisen.", source: "NASA / ESA", readtime: "4 Min.", category: "wissenschaft", imageUrl: "https://picsum.photos/seed/jwstplanet/600/400", articleUrl: "#" },
-        { title: "mRNA-Technik könnte Autoimmunerkrankungen revolutionieren", summary: "Wissenschaftler haben eine Methode entwickelt, mit der überaktive Immunreaktionen gezielt und dauerhaft gedämpft werden können.", source: "Science Magazine", readtime: "3 Min.", category: "wissenschaft", imageUrl: "https://picsum.photos/seed/mrnaauto/600/400", articleUrl: "#" },
-        { title: "Schlaf steigert Lernleistung um bis zu 40 % — neue Studie belegt Mechanismus", summary: "Forscher der Universität Tübingen zeigen, dass sechs Stunden Schlaf die Gedächtniskonsolidierung signifikant verbessert.", source: "Nature", readtime: "3 Min.", category: "wissenschaft", imageUrl: "https://picsum.photos/seed/sleepstudy/600/400", articleUrl: "#" }
-      ]
+      "id": "wissenschaft",
+      "titel": "Wissenschaft",
+      "artikel": []
     },
     {
-      id: "entertainment", titel: "Entertainment",
-      artikel: [
-        { title: "Neuer Trailer zu Dune: Messiah begeistert Fans weltweit", summary: "Denis Villeneuve zeigt erste Szenen des dritten Teils. Kinostart ist für Oktober 2026 angekündigt.", source: "IGN", readtime: "2 Min.", category: "film", imageUrl: "https://picsum.photos/seed/dunemessiah/600/400", articleUrl: "#" },
-        { title: "GTA VI: Rockstar bestätigt Release-Datum für November 2026", summary: "Nach jahrelangem Warten gibt Rockstar Games offiziell den Veröffentlichungstermin für das meisterwartete Spiel der Dekade bekannt.", source: "Eurogamer", readtime: "3 Min.", category: "gaming", imageUrl: "https://picsum.photos/seed/gtavi26/600/400", articleUrl: "#" },
-        { title: "Netflix knackt 350 Millionen Abonnenten — Werbe-Tier wächst stark", summary: "Das günstigere Werbemodell zieht mehr Neukunden an als erwartet und wird zum wichtigsten Wachstumstreiber.", source: "Variety", readtime: "2 Min.", category: "medien", imageUrl: "https://picsum.photos/seed/netflix350/600/400", articleUrl: "#" }
-      ]
+      "id": "entertainment",
+      "titel": "Entertainment",
+      "artikel": []
     }
   ]
 };
