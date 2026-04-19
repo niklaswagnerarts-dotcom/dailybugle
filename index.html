@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meine Zeitung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+window.ZEITUNG_DATA = {
+  meta: {
+    datum: "Sonntag, 19. April 2026",
+    ausgabe: 1,
+    wetter: "Strasbourg · 14 °C, leicht bewölkt",
+    updatezeit: "06:00",
+    artikelCount: 15
+  },
+  hero: {
+    title: "EU einigt sich auf neues KI-Regulierungspaket — Unternehmen müssen Transparenzpflichten erfüllen",
+    summary: "Die Europäische Union hat nach monatelangen Verhandlungen ein überarbeitetes KI-Gesetz verabschiedet. Unternehmen mit mehr als 50 Mitarbeitern sind künftig verpflichtet, den Einsatz automatisierter Entscheidungssysteme offenzulegen und Nutzern auf Anfrage eine menschliche Überprüfung anzubieten.",
+    source: "Spiegel Online",
+    readtime: "4 Min.",
+    imageUrl: "https://picsum.photos/seed/euai/800/600",
+    articleUrl: "#"
+  },
+  sektionen: [
+    {
+      id: "tech", titel: "Tech & AI",
+      artikel: [
+        { title: "Anthropic veröffentlicht Modell mit Kontextfenster von einer Million Tokens", summary: "Das neue Modell ist ab sofort über die API verfügbar und verändert die Spielregeln für Entwickler.", source: "The Verge", readtime: "2 Min.", category: "tech", imageUrl: "https://picsum.photos/seed/anthropic2/600/400", articleUrl: "#" },
+        { title: "Open-Source-Modell übertrifft GPT-4 in mehreren Benchmark-Tests", summary: "Ein chinesisches Forschungsteam hat ein Modell veröffentlicht, das bei Standard-Benchmarks besser abschneidet.", source: "Heise Online", readtime: "3 Min.", category: "tech", imageUrl: "https://picsum.photos/seed/llmbench/600/400", articleUrl: "#" },
+        { title: "Apple kündigt überarbeitete Siri mit vollständiger On-Device-KI an", summary: "Die neue Version soll vollständig lokal auf dem Gerät laufen und keine Nutzerdaten mehr in die Cloud senden.", source: "9to5Mac", readtime: "2 Min.", category: "tech", imageUrl: "https://picsum.photos/seed/applesiri/600/400", articleUrl: "#" }
+      ]
+    },
+    {
+      id: "politik", titel: "Politik",
+      artikel: [
+        { title: "Bundesregierung beschließt Haushalt 2027 mit umstrittenen Sparmaßnahmen", summary: "Trotz Widerstand aus der Koalition wurde der Entwurf mit knapper Mehrheit verabschiedet.", source: "FAZ", readtime: "5 Min.", category: "politik", imageUrl: "https://picsum.photos/seed/bundestag/600/400", articleUrl: "#" },
+        { title: "G7-Gipfel: Einigung auf gemeinsamen Rahmen für KI-Gouvernanz", summary: "Die sieben größten Industrienationen wollen bei der Regulierung künstlicher Intelligenz enger zusammenarbeiten.", source: "Zeit Online", readtime: "4 Min.", category: "politik", imageUrl: "https://picsum.photos/seed/g7summit/600/400", articleUrl: "#" },
+        { title: "Frankreich und Deutschland einigen sich auf neues Migrationsabkommen", summary: "Beide Länder wollen Asylverfahren künftig enger koordinieren und Rückführungen gemeinsam beschleunigen.", source: "Le Monde / taz", readtime: "3 Min.", category: "politik", imageUrl: "https://picsum.photos/seed/deufra/600/400", articleUrl: "#" }
+      ]
+    },
+    {
+      id: "wirtschaft", titel: "Wirtschaft",
+      artikel: [
+        { title: "DAX schließt auf neuem Rekordhoch — Technologiewerte treiben den Anstieg", summary: "Starke Quartalszahlen großer Technologieunternehmen trieben den deutschen Leitindex auf ein neues Allzeithoch.", source: "Handelsblatt", readtime: "3 Min.", category: "wirtschaft", imageUrl: "https://picsum.photos/seed/daxrecord/600/400", articleUrl: "#" },
+        { title: "EZB signalisiert weiteren Zinsschnitt im Sommer", summary: "Angesichts sinkender Inflation deutet die Europäische Zentralbank eine weitere Lockerung ihrer Geldpolitik an.", source: "Reuters", readtime: "3 Min.", category: "wirtschaft", imageUrl: "https://picsum.photos/seed/ezb2026/600/400", articleUrl: "#" },
+        { title: "NVIDIA übertrifft Erwartungen mit Quartalsgewinn von 26 Mrd. USD", summary: "Die anhaltend hohe Nachfrage nach KI-Chips beschert dem Konzern erneut Rekordgewinne.", source: "Bloomberg", readtime: "2 Min.", category: "wirtschaft", imageUrl: "https://picsum.photos/seed/nvidiaq/600/400", articleUrl: "#" }
+      ]
+    },
+    {
+      id: "wissenschaft", titel: "Wissenschaft",
+      artikel: [
+        { title: "James Webb entdeckt Atmosphäre auf erdähnlichem Exoplaneten", summary: "Erstmals konnten Astronomen eine dichte Atmosphäre auf einem felsigen Planeten außerhalb unseres Sonnensystems nachweisen.", source: "NASA / ESA", readtime: "4 Min.", category: "wissenschaft", imageUrl: "https://picsum.photos/seed/jwstplanet/600/400", articleUrl: "#" },
+        { title: "mRNA-Technik könnte Autoimmunerkrankungen revolutionieren", summary: "Wissenschaftler haben eine Methode entwickelt, mit der überaktive Immunreaktionen gezielt und dauerhaft gedämpft werden können.", source: "Science Magazine", readtime: "3 Min.", category: "wissenschaft", imageUrl: "https://picsum.photos/seed/mrnaauto/600/400", articleUrl: "#" },
+        { title: "Schlaf steigert Lernleistung um bis zu 40 % — neue Studie belegt Mechanismus", summary: "Forscher der Universität Tübingen zeigen, dass sechs Stunden Schlaf die Gedächtniskonsolidierung signifikant verbessert.", source: "Nature", readtime: "3 Min.", category: "wissenschaft", imageUrl: "https://picsum.photos/seed/sleepstudy/600/400", articleUrl: "#" }
+      ]
+    },
+    {
+      id: "entertainment", titel: "Entertainment",
+      artikel: [
+        { title: "Neuer Trailer zu Dune: Messiah begeistert Fans weltweit", summary: "Denis Villeneuve zeigt erste Szenen des dritten Teils. Kinostart ist für Oktober 2026 angekündigt.", source: "IGN", readtime: "2 Min.", category: "film", imageUrl: "https://picsum.photos/seed/dunemessiah/600/400", articleUrl: "#" },
+        { title: "GTA VI: Rockstar bestätigt Release-Datum für November 2026", summary: "Nach jahrelangem Warten gibt Rockstar Games offiziell den Veröffentlichungstermin für das meisterwartete Spiel der Dekade bekannt.", source: "Eurogamer", readtime: "3 Min.", category: "gaming", imageUrl: "https://picsum.photos/seed/gtavi26/600/400", articleUrl: "#" },
+        { title: "Netflix knackt 350 Millionen Abonnenten — Werbe-Tier wächst stark", summary: "Das günstigere Werbemodell zieht mehr Neukunden an als erwartet und wird zum wichtigsten Wachstumstreiber.", source: "Variety", readtime: "2 Min.", category: "medien", imageUrl: "https://picsum.photos/seed/netflix350/600/400", articleUrl: "#" }
+      ]
+    }
+  ]
+};
+</script>
+
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --f: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --bg-from:  #f0f4ff;
+  --bg-mid:   #faf0ff;
+  --bg-to:    #fff4f0;
+
+  --glass-bg: rgba(255,255,255,0.94);
+  --glass-border: rgba(255,255,255,0.95);
+  --glass-blur: 18px;
+
+  --text:    #06060c;
+  --text2:   #1a1a28;
+  --text3:   #444458;
+  --surface: rgba(255,255,255,0.55);
+
+  --c-tech:   oklch(48% 0.18 250);
+  --c-pol:    oklch(52% 0.18 22);
+  --c-wirt:   oklch(48% 0.16 155);
+  --c-wiss:   oklch(50% 0.18 290);
+  --c-ent:    oklch(55% 0.16 55);
+
+  --r: 16px;
+  --r-lg: 22px;
+  --shadow: 0 2px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-from:  #0d0e1a;
+    --bg-mid:   #130d1a;
+    --bg-to:    #1a0d0e;
+    --glass-bg: rgba(18,18,28,0.88);
+    --glass-border: rgba(255,255,255,0.12);
+    --text:    #f0f0fa;
+    --text2:   #c8c8d8;
+    --text3:   #8888a0;
+    --surface: rgba(20,20,30,0.55);
+    --shadow: 0 2px 24px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.2);
+    --shadow-hover: 0 8px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
+  }
+}
+
+/* ═══════════════════════════════════════
+   BASE
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--f);
+  font-weight: 400;
+  color: var(--text);
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, oklch(88% 0.08 260 / 0.7), transparent),
+    radial-gradient(ellipse 60% 50% at 80% 20%, oklch(88% 0.08 300 / 0.6), transparent),
+    radial-gradient(ellipse 70% 60% at 60% 90%, oklch(90% 0.06 30 / 0.5), transparent),
+    var(--bg-from);
+  background-attachment: fixed;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ═══════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════ */
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ═══════════════════════════════════════
+   NAV / MASTHEAD
+═══════════════════════════════════════ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  margin: 0 -24px;
+  padding: 0 24px;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+.nav.scrolled {
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  background: rgba(255,255,255,0.72);
+  border-bottom-color: rgba(255,255,255,0.9);
+}
+@media (prefers-color-scheme: dark) {
+  .nav.scrolled {
+    background: rgba(12,12,20,0.75);
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+}
+
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.nav-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text2);
+}
+.nav-meta .pill {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Weather widget */
+.weather-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 4px 12px 4px 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.weather-icon { width: 30px; height: 30px; flex-shrink: 0; }
+.weather-icon svg { width: 100%; height: 100%; overflow: visible; }
+.weather-info { display: flex; flex-direction: column; line-height: 1.25; }
+.weather-temp { font-size: 13px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+.weather-cond { font-size: 10px; color: var(--text3); }
+
+@keyframes sun-spin  { to { transform: rotate(360deg); transform-origin: 15px 15px; } }
+@keyframes sun-glow  { 0%,100%{opacity:.7} 50%{opacity:1} }
+@keyframes cloud-bob { 0%,100%{transform:translateX(0)} 50%{transform:translateX(2px)} }
+@keyframes rain-drop {
+  0%   { transform: translateY(0); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero-wrap {
+  padding: 32px 0 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  animation: fadeUp 0.45s ease both;
+}
+
+.hero-text {
+  padding: 36px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  background: rgba(255,255,255,0.97);
+  color: #06060c;
+}
+.hero-text * { color: inherit; }
+.hero-text .hero-title { color: #06060c; }
+.hero-text .hero-summary { color: #2a2a3a; }
+.hero-text .hero-source { color: #1a1a28; font-weight: 600; }
+.hero-text .hero-time { color: #444458; }
+.hero-text .hero-kicker { color: #444458; }
+.hero-text .hero-kicker::before { background: #444458; }
+@media (prefers-color-scheme: dark) {
+  .hero-text {
+    background: rgba(16,16,26,0.97);
+  }
+  .hero-text .hero-title  { color: #f0f0fa; }
+  .hero-text .hero-summary { color: #c0c0d0; }
+  .hero-text .hero-source  { color: #d0d0e0; }
+  .hero-text .hero-time    { color: #8888a0; }
+  .hero-text .hero-kicker  { color: #8888a0; }
+  .hero-text .hero-kicker::before { background: #8888a0; }
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text2);
+}
+.hero-kicker::before {
+  content: '';
+  width: 14px; height: 1.5px;
+  background: var(--text3);
+  display: block;
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+.hero-summary {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text2);
+  font-weight: 300;
+}
+
+.hero-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+.hero-source {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+}
+.hero-dot { color: var(--text3); font-size: 10px; }
+.hero-time {
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.read-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  background: var(--text);
+  color: var(--bg-from);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 100px;
+  width: fit-content;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.read-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+@media (prefers-color-scheme: dark) {
+  .read-btn { color: #0a0a0f; }
+}
+
+.hero-img {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+}
+.hero-img img { position: absolute; inset: 0; transition: transform 0.6s ease; }
+.hero:hover .hero-img img { transform: scale(1.04); }
+
+/* ═══════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════ */
+.sections { margin-top: 40px; }
+
+.section {
+  margin-top: 40px;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.5s ease forwards;
+}
+.section:nth-child(1) { animation-delay: 0.05s; }
+.section:nth-child(2) { animation-delay: 0.10s; }
+.section:nth-child(3) { animation-delay: 0.15s; }
+.section:nth-child(4) { animation-delay: 0.20s; }
+.section:nth-child(5) { animation-delay: 0.25s; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-icon {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-icon svg { width: 18px; height: 18px; stroke: white; }
+.icon-tech, .icon-politik, .icon-wirtschaft, .icon-wissenschaft, .icon-entertainment { color: white; }
+
+.section-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-shadow: 0 1px 3px rgba(255,255,255,0.6);
+}
+@media (prefers-color-scheme: dark) {
+  .section-name { text-shadow: none; }
+}
+
+.section-all {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: color 0.15s;
+}
+.section-all:hover { color: var(--text2); }
+
+/* ═══════════════════════════════════════
+   CARDS
+═══════════════════════════════════════ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.card-img {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(120,120,140,0.1);
+}
+.card-img img { transition: transform 0.5s ease; }
+.card:hover .card-img img { transform: scale(1.06); }
+
+.card-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+.badge::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.badge-tech         { color: oklch(38% 0.20 250); }
+.badge-politik      { color: oklch(40% 0.20 22); }
+.badge-wirtschaft   { color: oklch(38% 0.18 155); }
+.badge-wissenschaft { color: oklch(40% 0.20 290); }
+.badge-film,
+.badge-gaming,
+.badge-medien,
+.badge-entertainment{ color: oklch(42% 0.18 55); }
+
+@media (prefers-color-scheme: dark) {
+  .badge-tech         { color: oklch(72% 0.16 250); }
+  .badge-politik      { color: oklch(74% 0.16 22); }
+  .badge-wirtschaft   { color: oklch(72% 0.14 155); }
+  .badge-wissenschaft { color: oklch(74% 0.16 290); }
+  .badge-film,
+  .badge-gaming,
+  .badge-medien,
+  .badge-entertainment{ color: oklch(76% 0.14 55); }
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  flex: 1;
+  text-wrap: pretty;
+}
+
+.card-summary {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text2);
+  font-weight: 300;
+}
+
+.card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text2);
+  font-weight: 500;
+  margin-top: 2px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(128,128,160,0.1);
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+.site-footer {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text2);
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(128,128,160,0.15);
+}
+.footer-logo {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text2);
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-img { min-height: 240px; aspect-ratio: 16/9; position: relative; }
+  .hero-img img { position: static; width: 100%; height: 100%; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .page { padding: 0 14px 60px; }
+  .cards { grid-template-columns: 1fr; }
+  .nav { margin: 0 -14px; padding: 0 14px; }
+  .hero-text { padding: 24px 20px 20px; }
+}
+
+/* ═══════════════════════════════════════
+   TWEAKS PANEL
+═══════════════════════════════════════ */
+#tweaks-panel {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 256px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 20px;
+  z-index: 9999;
+  box-shadow: var(--shadow-hover);
+  font-family: var(--f);
+  font-size: 13px;
+  color: var(--text2);
+}
+#tweaks-panel.visible { display: block; }
+
+.tweaks-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 16px;
+}
+
+.tweak-row { margin-bottom: 14px; }
+.tweak-lbl {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text2);
+}
+.tweak-lbl span { color: var(--text3); font-weight: 400; }
+
+select {
+  width: 100%;
+  background: rgba(128,128,160,0.10);
+  border: 1px solid rgba(128,128,160,0.2);
+  color: var(--text);
+  font-family: var(--f);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+}
+
+input[type=range] {
+  width: 100%;
+  accent-color: var(--c-tech);
+  cursor: pointer;
+}
+
+.tweak-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.toggle-sw {
+  width: 38px; height: 22px;
+  background: rgba(128,128,160,0.2);
+  border-radius: 11px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.toggle-sw.on { background: var(--c-tech); }
+.toggle-sw::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  background: white;
+  border-radius: 50%;
+  top: 3px; left: 3px;
+  transition: left 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.toggle-sw.on::after { left: 19px; }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logo.png" alt="The Daily Bugle" style="height:50px;width:auto;display:block;object-fit:contain;"></a>
+    <div class="nav-meta">
+      <span id="js-datum-nav"></span>
+      <span class="pill" id="js-wetter-nav"></span>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <article class="hero" id="js-hero"></article>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="sections" id="js-sections"></div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <img src="logo.png" alt="The Daily Bugle" style="height:32px;width:auto;display:block;opacity:0.85;">
+    <span id="js-footer"></span>
+  </footer>
+</div>
+
+<!-- TWEAKS -->
+<div id="tweaks-panel">
+  <div class="tweaks-title">Tweaks</div>
+
+  <div class="tweak-row">
+    <div class="tweak-lbl">Hintergrund <span id="tw-bg-val">Violett</span></div>
+    <select id="tw-bg">
+      <option value="purple">Violett-Blau</option>
+      <option value="green">Grün-Türkis</option>
+      <option value="warm">Warm-Sand</option>
+      <option value="mono">Monochrom</option>
+    </select>
+  </div>
+
+  <div class="tweak-row">
+    <div class="tweak-lbl">Glasstärke <span id="tw-blur-val">18px</span></div>
+    <input type="range" id="tw-blur" min="0" max="40" step="2" value="18">
+  </div>
+
+  <div class="tweak-row">
+    <div class="tweak-lbl">Zusammenfassungen</div>
+    <div class="tweak-toggle">
+      <span id="tw-sum-lbl" style="font-size:12px;color:var(--text3)">Sichtbar</span>
+      <div class="toggle-sw on" id="tw-sum"></div>
+    </div>
+  </div>
+
+  <div class="tweak-row">
+    <div class="tweak-lbl">Bilder</div>
+    <div class="tweak-toggle">
+      <span id="tw-img-lbl" style="font-size:12px;color:var(--text3)">Sichtbar</span>
+      <div class="toggle-sw on" id="tw-img"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Scroll nav ── */
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+/* ── Tweaks ── */
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode')   document.getElementById('tweaks-panel').classList.add('visible');
+  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').classList.remove('visible');
+});
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+const bgPresets = {
+  purple: ['#f0f4ff','#faf0ff','#fff4f0', 'oklch(88% 0.08 260 / 0.7)','oklch(88% 0.08 300 / 0.6)','oklch(90% 0.06 30 / 0.5)'],
+  green:  ['#f0fff4','#f0fafa','#fffff0', 'oklch(88% 0.08 160 / 0.7)','oklch(88% 0.08 200 / 0.6)','oklch(90% 0.06 90 / 0.5)'],
+  warm:   ['#fff8f0','#fff0f4','#fffff0', 'oklch(92% 0.07 60 / 0.7)', 'oklch(90% 0.07 30 / 0.6)', 'oklch(92% 0.05 80 / 0.5)'],
+  mono:   ['#f5f5f7','#f0f0f5','#ebebf0', 'oklch(90% 0.01 260 / 0.6)','oklch(88% 0.01 260 / 0.5)','oklch(86% 0.01 260 / 0.4)'],
+};
+const bgLabels = { purple:'Violett-Blau', green:'Grün-Türkis', warm:'Warm-Sand', mono:'Monochrom' };
+
+document.getElementById('tw-bg').addEventListener('change', function() {
+  const p = bgPresets[this.value];
+  document.documentElement.style.setProperty('--bg-from', p[0]);
+  document.documentElement.style.setProperty('--bg-mid',  p[1]);
+  document.documentElement.style.setProperty('--bg-to',   p[2]);
+  document.body.style.background = `
+    radial-gradient(ellipse 80% 60% at 20% 10%, ${p[3]}, transparent),
+    radial-gradient(ellipse 60% 50% at 80% 20%, ${p[4]}, transparent),
+    radial-gradient(ellipse 70% 60% at 60% 90%, ${p[5]}, transparent),
+    ${p[0]}`;
+  document.body.style.backgroundAttachment = 'fixed';
+  document.getElementById('tw-bg-val').textContent = bgLabels[this.value];
+});
+
+document.getElementById('tw-blur').addEventListener('input', function() {
+  document.documentElement.style.setProperty('--glass-blur', this.value + 'px');
+  document.getElementById('tw-blur-val').textContent = this.value + 'px';
+});
+
+let sumOn = true;
+document.getElementById('tw-sum').addEventListener('click', function() {
+  sumOn = !sumOn;
+  this.classList.toggle('on', sumOn);
+  document.getElementById('tw-sum-lbl').textContent = sumOn ? 'Sichtbar' : 'Aus';
+  document.querySelectorAll('.card-summary, .hero-summary').forEach(el => el.style.display = sumOn ? '' : 'none');
+});
+
+let imgOn = true;
+document.getElementById('tw-img').addEventListener('click', function() {
+  imgOn = !imgOn;
+  this.classList.toggle('on', imgOn);
+  document.getElementById('tw-img-lbl').textContent = imgOn ? 'Sichtbar' : 'Aus';
+  document.querySelectorAll('.card-img, .hero-img').forEach(el => el.style.display = imgOn ? '' : 'none');
+});
+
+/* ── Render ── */
+(function() {
+  const D = window.ZEITUNG_DATA;
+  const m = D.meta;
+
+  document.getElementById('js-datum-nav').textContent = m.datum;
+
+  // Weather widget
+  (function() {
+    const raw = m.wetter; // e.g. "Strasbourg · 14 °C, leicht bewölkt"
+    const parts = raw.split('·');
+    const city = parts[0].trim();
+    const rest = parts[1] ? parts[1].trim() : '';
+    const tempMatch = rest.match(/([\d\-]+)\s*°C/);
+    const temp = tempMatch ? tempMatch[1] + ' °C' : '';
+    const condRaw = rest.replace(/[\d\-]+\s*°C,?\s*/, '').trim();
+
+    const w = condRaw.toLowerCase();
+    let icon = '';
+
+    if (w.includes('regen') || w.includes('schauer')) {
+      // Animated rain
+      icon = `<svg viewBox="0 0 30 30" fill="none">
+        <circle cx="11" cy="11" r="6" fill="#90b8e0" style="animation:cloud-bob 3s ease-in-out infinite"/>
+        <ellipse cx="17" cy="13" rx="8" ry="6" fill="#b8d4f0" style="animation:cloud-bob 3s ease-in-out infinite"/>
+        <line x1="9"  y1="21" x2="7"  y2="27" stroke="#5090c8" stroke-width="1.5" stroke-linecap="round" style="animation:rain-drop 1.1s ease-in infinite 0.0s"/>
+        <line x1="15" y1="21" x2="13" y2="27" stroke="#5090c8" stroke-width="1.5" stroke-linecap="round" style="animation:rain-drop 1.1s ease-in infinite 0.3s"/>
+        <line x1="21" y1="21" x2="19" y2="27" stroke="#5090c8" stroke-width="1.5" stroke-linecap="round" style="animation:rain-drop 1.1s ease-in infinite 0.6s"/>
+      </svg>`;
+    } else if (w.includes('bewölkt') || w.includes('wolkig') || w.includes('bedeckt')) {
+      if (w.includes('leicht') || w.includes('teils')) {
+        // Partly cloudy — sun + cloud
+        icon = `<svg viewBox="0 0 30 30" fill="none">
+          <g style="animation:sun-spin 8s linear infinite;transform-origin:9px 9px">
+            <circle cx="9" cy="9" r="4" fill="#f5c842" style="animation:sun-glow 2s ease-in-out infinite"/>
+            <line x1="9" y1="2" x2="9" y2="4"   stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="9" y1="14" x2="9" y2="16"  stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="2" y1="9" x2="4" y2="9"    stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="14" y1="9" x2="16" y2="9"  stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="3.9" y1="3.9" x2="5.3" y2="5.3" stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="12.7" y1="12.7" x2="14.1" y2="14.1" stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="14.1" y1="3.9" x2="12.7" y2="5.3" stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="5.3" y1="12.7" x2="3.9" y2="14.1" stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+          <circle cx="14" cy="18" r="5" fill="#c8d8ee" style="animation:cloud-bob 3s ease-in-out infinite"/>
+          <ellipse cx="20" cy="19.5" rx="7" ry="5" fill="#ddeaf8" style="animation:cloud-bob 3s ease-in-out infinite"/>
+        </svg>`;
+      } else {
+        // Overcast — full cloud
+        icon = `<svg viewBox="0 0 30 30" fill="none">
+          <circle cx="10" cy="13" r="6" fill="#b0c4d8" style="animation:cloud-bob 4s ease-in-out infinite"/>
+          <circle cx="18" cy="15" r="6" fill="#c8d8ec" style="animation:cloud-bob 4s ease-in-out infinite 0.5s"/>
+          <ellipse cx="14" cy="18" rx="10" ry="6" fill="#d8e8f4" style="animation:cloud-bob 4s ease-in-out infinite 0.2s"/>
+        </svg>`;
+      }
+    } else if (w.includes('schnee') || w.includes('schneefall')) {
+      icon = `<svg viewBox="0 0 30 30" fill="none">
+        <ellipse cx="15" cy="13" rx="10" ry="6" fill="#d8eaf8"/>
+        <circle cx="10" cy="10" r="4" fill="#c8ddf0"/>
+        <text x="8"  y="26" font-size="7" fill="#90c0e8" style="animation:rain-drop 1.5s ease-in infinite 0.0s">❄</text>
+        <text x="16" y="26" font-size="7" fill="#90c0e8" style="animation:rain-drop 1.5s ease-in infinite 0.5s">❄</text>
+      </svg>`;
+    } else {
+      // Clear/sunny (default)
+      icon = `<svg viewBox="0 0 30 30" fill="none">
+        <circle cx="15" cy="15" r="6" fill="#f5c842" style="animation:sun-glow 2s ease-in-out infinite"/>
+        <g style="animation:sun-spin 10s linear infinite;transform-origin:15px 15px">
+          <line x1="15" y1="3"  x2="15" y2="7"  stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+          <line x1="15" y1="23" x2="15" y2="27" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+          <line x1="3"  y1="15" x2="7"  y2="15" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+          <line x1="23" y1="15" x2="27" y2="15" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6.2" y1="6.2" x2="9"  y2="9"   stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+          <line x1="21" y1="21"  x2="23.8" y2="23.8" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+          <line x1="23.8" y1="6.2" x2="21" y2="9"  stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+          <line x1="9" y1="21"   x2="6.2" y2="23.8" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </svg>`;
+    }
+
+    const el = document.getElementById('js-wetter-nav');
+    el.className = 'weather-pill';
+    el.innerHTML = `
+      <div class="weather-icon">${icon}</div>
+      <div class="weather-info">
+        <span class="weather-temp">${temp}</span>
+        <span class="weather-cond">${condRaw || city}</span>
+      </div>
+    `;
+  })();
+  document.getElementById('js-footer').textContent =
+    m.artikelCount + ' Artikel analysiert · Zuletzt ' + m.updatezeit + ' Uhr';
+
+  const h = D.hero;
+  document.getElementById('js-hero').innerHTML = `
+    <div class="hero-text">
+      <div class="hero-kicker">Aufmacher des Tages</div>
+      <a href="${h.articleUrl}"><h1 class="hero-title">${h.title}</h1></a>
+      <p class="hero-summary">${h.summary}</p>
+      <div class="hero-foot">
+        <span class="hero-source">${h.source}</span>
+        <span class="hero-dot">·</span>
+        <span class="hero-time">${h.readtime} Lesezeit</span>
+      </div>
+      <a href="${h.articleUrl}" class="read-btn">Artikel lesen →</a>
+    </div>
+    <a href="${h.articleUrl}" class="hero-img">
+      <img src="${h.imageUrl}" alt="${h.title}" loading="lazy">
+    </a>
+  `;
+
+  const container = document.getElementById('js-sections');
+  const sectionIcons = {
+    tech: `<svg viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><line x1="7" y1="7" x2="7" y2="7" stroke-width="2.5"/><line x1="10" y1="7" x2="10" y2="7" stroke-width="2.5"/><line x1="13" y1="7" x2="13" y2="7" stroke-width="2.5"/><line x1="7" y1="10" x2="7" y2="10" stroke-width="2.5"/><line x1="10" y1="10" x2="13" y2="10"/><line x1="7" y1="13" x2="13" y2="13"/></svg>`,
+    politik: `<svg viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17h16"/><path d="M4 17V9"/><path d="M8 17V9"/><path d="M12 17V9"/><path d="M16 17V9"/><path d="M1 9l9-6 9 6"/></svg>`,
+    wirtschaft: `<svg viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,14 7,9 11,12 18,5"/><polyline points="14,5 18,5 18,9"/></svg>`,
+    wissenschaft: `<svg viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="3"/><ellipse cx="10" cy="10" rx="9" ry="4"/><ellipse cx="10" cy="10" rx="9" ry="4" transform="rotate(60 10 10)"/><ellipse cx="10" cy="10" rx="9" ry="4" transform="rotate(120 10 10)"/></svg>`,
+    entertainment: `<svg viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="5,3 19,10 5,17"/></svg>`
+  };
+  const iconClass = { tech:'icon-tech', politik:'icon-politik', wirtschaft:'icon-wirtschaft', wissenschaft:'icon-wissenschaft', entertainment:'icon-entertainment', film:'icon-entertainment', gaming:'icon-entertainment', medien:'icon-entertainment' };
+
+  D.sektionen.forEach(sek => {
+    const cards = sek.artikel.map(a => `
+      <a href="${a.articleUrl}" class="card">
+        <div class="card-img">
+          <img src="${a.imageUrl}" alt="${a.title}" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="badge badge-${a.category}">${a.category}</span>
+          <p class="card-title">${a.title}</p>
+          <p class="card-summary">${a.summary}</p>
+          <div class="card-foot">
+            <span>${a.source}</span>
+            <span>${a.readtime}</span>
+          </div>
+        </div>
+      </a>
+    `).join('');
+
+    const sec = document.createElement('section');
+    sec.className = 'section';
+    sec.innerHTML = `
+      <div class="section-head">
+        <div class="section-label">
+          <div class="section-icon ${iconClass[sek.id] || 'icon-tech'}">${sectionIcons[sek.id] || sectionIcons.tech}</div>
+          <span class="section-name">${sek.titel}</span>
+        </div>
+        <a href="#" class="section-all">${sek.artikel.length} Artikel ›</a>
+      </div>
+      <div class="cards">${cards}</div>
+    `;
+    container.appendChild(sec);
+  });
+})();
+</script>
+</body>
+</html>
